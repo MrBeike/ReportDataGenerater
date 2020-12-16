@@ -96,18 +96,15 @@ def xlsx2dat(fileName):
                             ret_val = dcm_lst[bw_type].get(col_idx + 1)
                             if ret_val == 2:
                                 tmp = '{:.2f}'.format(cell_value)
-                            else:
-                                if ret_val == 5:
-                                    tmp = '{:.5f}'.format(cell_value)
-                                else:
-                                    if ret_val == 0:
-                                        tmp = int(cell_value)
-                                    contents.append(str(tmp))
+                            elif ret_val == 5:
+                                tmp = '{:.5f}'.format(cell_value)
+                            elif ret_val == 0:
+                                tmp = int(cell_value)
+                            contents.append(str(tmp))
                         else:
                             contents.append(str(int(cell_value)))
                     else:
                         contents.append(str(cell_value))
-
                 txtfile.write(sep.join(contents))
                 if row_idx <= nrows - 2:
                     txtfile.write('\n')
